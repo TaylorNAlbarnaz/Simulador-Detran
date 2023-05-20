@@ -11,3 +11,5 @@ A idéia é que você utilize isso para parar de esquecer de dar seta, trocar de
 dificilmente você vai irá tantos pontos quanto nesse simulado na prova real, mas quanto mais você conseguir diminuir melhor, 
 caso consiga 0 pontos em 10 minutos de simulador, você provavelmente não cometerá erros bobos de atenção como esses, 
 a menos que esteja muito nervoso. 
+
+Recomendo clonar o repositório e abrir no seu computador para ter a narração e sons, deixará tudo mais imersivo, tudo que é preciso fazer é abrir o *index.html* em seu navegador, nada mais.

@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#controls {
+    position: absolute;
+    top: 0;
+    font-size: 3rem;
+}
+
+#exame {
+    font-size: 5rem;
+}
+
+#exame-volume {
+    display: flex;
+    justify-content: center;
+    margin-top: 20%;
+}
+
+.invisible {
+    display: none!important;
+}
+
+#resultado-parcial {
+    display: flex;
+    flex-direction: column;
+}
+
+.resultado-parcial__item {
+    display: flex;
+}
+
+.resultado-parcial__checks {
+    display: flex;
+    font-size: 1.2rem;
+}
+
+.resultado-parcial__text {
+    margin-left: 20px;
+}
+
+#progress-bar {
+    position: absolute;
+    bottom: 0;
+    height: 5px;
+    width: 100vw;
+    background-color: darkslategray;
+}
+
+#progress-bar__inner {
+    height: 100%;
+    transition: 1s;
+    background-color: limegreen;
+}
+
+.green-check, .red-check, #pause, #resume {
+    cursor: pointer;
+    transition: .3s;
+}
+
+.green-check:hover, .red-check:hover {
+    scale: 1.2;
+}
+
+.green-check:hover, .green-check.checked {
+    color: limegreen;
+}
+
+.red-check:hover, .red-check.checked {
+    color: crimson;
+}
+
+.checked {
+    scale: 1.1;
+}
+
+#pause:hover {
+    opacity: .8;
+}
+
+.resultado-final__item {
+    display: flex;
+    width: max-content;
+}
+
+.resultado-final__item ion-icon {
+    color: crimson;
+}
+
+.resultado-final__pontos {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}

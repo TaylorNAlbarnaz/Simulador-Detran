@@ -263,7 +263,7 @@ function pegarProximaInstrucao() {
                     sequenciaDeInstrucoes = [7, 8];
                     break;
                 case 8:
-                    sequenciaDeInstrucoes = [10];
+                    sequenciaDeInstrucoes = [9];
                     break;
                 default:
                     sequenciaDeInstrucoes = [aleatorio];

@@ -105,3 +105,8 @@ body {
     text-align: center;
     font-weight: bold;
 }
+
+#configuracoes__radio {
+    display: flex;
+    flex-direction: column;
+}

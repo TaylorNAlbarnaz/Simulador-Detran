@@ -7,11 +7,16 @@ let porcentagem = 0;
 let telaAtual = 0;
 let duracaoInstrucaoAtual;
 let timer;
+
+// Configurações
+let modoDeTrajeto = 0; //0 = normal com baliza, 1 = sem baliza, 2 = apenas 3 pontas
 let mutado = false;
 
+// Referencias
 const exame = document.getElementById("exame");
 const resultadoParcial = document.getElementById("resultado-parcial");
 const resultadoFinal = document.getElementById("resultado-final");
+const configuracoes = document.getElementById("configuracoes");
 const pausar = document.getElementById("pause");
 const resumir = document.getElementById("resume");
 const mutar = document.getElementById("mute");
@@ -80,7 +85,18 @@ function inicializar() {
 
     instrucaoAtual = 10;
     instrucaoInfracoes = [];
-    sequenciaDeInstrucoes = [12, 11, 10, 7, 8];
+
+    selecionarModoDeTrajeto();
+
+    if (modoDeTrajeto == 0) {
+        sequenciaDeInstrucoes = [12, 11, 10, 7, 8];
+    } else
+    if (modoDeTrajeto == 1) {
+        sequenciaDeInstrucoes = [];
+    } else
+    if (modoDeTrajeto == 2) {
+        sequenciaDeInstrucoes = [9];
+    }
 
     todasInfracoesCometidas = [];
     porcentagem = 0;
@@ -88,11 +104,11 @@ function inicializar() {
     duracaoInstrucaoAtual = 20;
 
     exame.classList.remove("invisible");
+    configuracoes.classList.add("invisible");
     resultadoParcial.classList.add("invisible");
     resultadoFinal.classList.add("invisible");
 
     timer = setTimeout(AtualizarPorcentagem, 1000);
-    adicionarEventosNosBotoes();
     pegarProximaInstrucao();
 }
 
@@ -130,6 +146,16 @@ function tocarSom(som) {
     const audio = new Audio(som);
     audio.loop = false;
     audio.play();
+}
+
+// Pega o modo de trajeto selecionado pelo usuário
+function selecionarModoDeTrajeto() {
+    const seletores = document.getElementsByName('modo');
+ 
+    for (i = 0; i < seletores.length; i++) {
+        if (seletores[i].checked)
+            modoDeTrajeto = seletores[i].value;
+    }
 }
 
 // Atualiza as infrações na tela
@@ -227,18 +253,22 @@ function pegarProximaInstrucao() {
     if (sequenciaDeInstrucoes.length > 0) {
         instrucaoAtual = sequenciaDeInstrucoes.shift();
     } else {
-        const aleatorio = Math.floor(Math.random() * 9);
+        if (modoDeTrajeto == 2) {
+            sequenciaDeInstrucoes = [9];
+        } else {
+            const aleatorio = Math.floor(Math.random() * 9);
 
-        switch (aleatorio) {
-            case 7:
-                sequenciaDeInstrucoes = [7, 8];
-                break;
-            case 8:
-                sequenciaDeInstrucoes = [10];
-                break;
-            default:
-                sequenciaDeInstrucoes = [aleatorio];
-                break;
+            switch (aleatorio) {
+                case 7:
+                    sequenciaDeInstrucoes = [7, 8];
+                    break;
+                case 8:
+                    sequenciaDeInstrucoes = [10];
+                    break;
+                default:
+                    sequenciaDeInstrucoes = [aleatorio];
+                    break;
+            }
         }
     }
 
@@ -251,7 +281,7 @@ function atualizarTela() {
         telaAtual = 1;
         exame.classList.add("invisible");
         resultadoParcial.classList.remove("invisible");
-        duracaoInstrucaoAtual = instrucaoInfracoes.length * 4;
+        duracaoInstrucaoAtual = 4 + instrucaoInfracoes.length * 2;
     } else {
         telaAtual = 0;
         exame.classList.remove("invisible");
@@ -279,4 +309,5 @@ function AtualizarPorcentagem() {
     timer = setTimeout(AtualizarPorcentagem, 1000);
 }
 
-inicializar();
+// Espera 2 segundos para inicializar
+adicionarEventosNosBotoes();

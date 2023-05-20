@@ -9,11 +9,11 @@
 </head>
 <body>
     <div id="controls">
-        <ion-icon name="pause" id="pause"></ion-icon>
-        <ion-icon name="play" id="resume" class="invisible"></ion-icon>
+        <ion-icon name="pause" id="pause" class="invisible"></ion-icon>
+        <ion-icon name="play" id="resume"></ion-icon>
     </div>
 
-    <section id="exame">
+    <section id="exame" class="invisible">
         <div id="exame-texto"></div>
         <div id="exame-volume">
             <ion-icon id="mute" name="volume-high"></ion-icon>
@@ -24,6 +24,15 @@
     <section id="resultado-parcial" class="invisible"></section>
 
     <section id="resultado-final" class="invisible"></section>
+
+    <section id="configuracoes">
+        <b>Modo de Trajeto:</b>
+        <div id="configuracoes__radio">
+            <div><input type="radio" id="modo" name="modo" value="0" checked/> Trajeto com Baliza</div>
+            <div><input type="radio" id="modo" name="modo" value="1" /> Trajeto sem Baliza</div>
+            <div><input type="radio" id="modo" name="modo" value="2" /> Apenas Retorno 3 Pontas</div>
+        </div>
+    </section>
 
     <div id="progress-bar">
         <div id="progress-bar__inner"></div>

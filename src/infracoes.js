@@ -8,7 +8,7 @@ const Infracoes = {
         pontos: 4
     },
     "3": {
-        texto: "Reduzir para primeira marcha",
+        texto: "Colocar na primeira marcha",
         pontos: 2
     },
     "4": {
@@ -58,5 +58,13 @@ const Infracoes = {
     "15": {
         texto: "Olhar o painel do carro",
         pontos: 0
+    },
+    "16": {
+        texto: "Ligar o carro",
+        pontos: 0
+    },
+    "17": {
+        texto: "Colocar em ponto morto",
+        pontos: 21
     }
 }

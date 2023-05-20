@@ -83,7 +83,6 @@ function inicializar() {
     pausar.classList.remove("invisible");
     resumir.classList.add("invisible");
 
-    instrucaoAtual = 8;
     instrucaoInfracoes = [];
 
     selecionarModoDeTrajeto();
@@ -92,7 +91,7 @@ function inicializar() {
         sequenciaDeInstrucoes = [12, 11, 10, 7, 8];
     } else
     if (modoDeTrajeto == 1) {
-        sequenciaDeInstrucoes = [];
+        sequenciaDeInstrucoes = [8];
     } else
     if (modoDeTrajeto == 2) {
         sequenciaDeInstrucoes = [9];
@@ -256,7 +255,7 @@ function pegarProximaInstrucao() {
         if (modoDeTrajeto == 2) {
             sequenciaDeInstrucoes = [9];
         } else {
-            const aleatorio = Math.floor(Math.random() * 9);
+            const aleatorio = Math.floor(Math.random() * 9) + 1;
 
             switch (aleatorio) {
                 case 7:
@@ -269,6 +268,9 @@ function pegarProximaInstrucao() {
                     sequenciaDeInstrucoes = [aleatorio];
                     break;
             }
+
+            pegarProximaInstrucao();
+            return;
         }
     }
 

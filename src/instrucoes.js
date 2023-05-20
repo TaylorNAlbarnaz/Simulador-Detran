@@ -44,7 +44,7 @@ const Instrucoes = {
     "8": {
         texto: "Saia do estacionamento",
         infracoes: [1, 7, 11, 15, 4],
-        duracao: 8,
+        duracao: 14,
         voz: "sair"
     },
     "9": {

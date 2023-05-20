@@ -83,7 +83,7 @@ function inicializar() {
     pausar.classList.remove("invisible");
     resumir.classList.add("invisible");
 
-    instrucaoAtual = 10;
+    instrucaoAtual = 8;
     instrucaoInfracoes = [];
 
     selecionarModoDeTrajeto();

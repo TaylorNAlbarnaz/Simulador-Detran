@@ -7,16 +7,22 @@ let porcentagem = 0;
 let telaAtual = 0;
 let duracaoInstrucaoAtual;
 let timer;
+let mutado = false;
 
 const exame = document.getElementById("exame");
 const resultadoParcial = document.getElementById("resultado-parcial");
 const resultadoFinal = document.getElementById("resultado-final");
 const pausar = document.getElementById("pause");
 const resumir = document.getElementById("resume");
+const mutar = document.getElementById("mute");
+const desmutar = document.getElementById("unmute");
 
 function adicionarEventosNosBotoes() {
     pausar.addEventListener('click', finalizar);
     resumir.addEventListener('click', inicializar);
+
+    mutar.addEventListener('click', mutarSom);
+    desmutar.addEventListener('click', desmutarSom);
 }
 
 // Adiciona o evento de clique aos cheques
@@ -33,6 +39,21 @@ function adicionarEventosNosCheques() {
     }
 }
 
+// Muta o som
+function mutarSom() {
+    mutado = true;
+    mutar.classList.add("invisible");
+    desmutar.classList.remove("invisible");
+}
+
+// Desmuta o som
+function desmutarSom() {
+    mutado = false;
+    mutar.classList.remove("invisible");
+    desmutar.classList.add("invisible");
+}
+
+// Finaliza o simulado e mostra os resultados
 function finalizar() {
     if (telaAtual == 1) {
         checarInfracoesCometidas();
@@ -52,6 +73,7 @@ function finalizar() {
     checarTodasAsInfracoes();
 }
 
+// Inicializa ou reinicializa a aplicação
 function inicializar() {
     pausar.classList.remove("invisible");
     resumir.classList.add("invisible");
@@ -91,11 +113,23 @@ function marcarCheck(e) {
 function atualizarInstrucao() {
     const texto = document.getElementById("exame-texto");
     texto.innerText = Instrucoes[instrucaoAtual.toString()].texto;
-    duracaoInstrucaoAtual = Instrucoes[instrucaoAtual.toString()].duracao;
 
+    duracaoInstrucaoAtual = Instrucoes[instrucaoAtual.toString()].duracao;
     instrucaoInfracoes = Instrucoes[instrucaoAtual.toString()].infracoes;
+
+    if (!mutado) {
+        tocarSom("../media/" + Instrucoes[instrucaoAtual.toString()].voz + ".mp3");
+    }
+
     atualizarInfracoes();
     adicionarEventosNosCheques();
+}
+
+//Toca um som uma vez
+function tocarSom(som) {
+    const audio = new Audio(som);
+    audio.loop = false;
+    audio.play();
 }
 
 // Atualiza as infrações na tela
@@ -211,6 +245,7 @@ function pegarProximaInstrucao() {
     atualizarInstrucao();
 }
 
+// Atualiza a tela após a porcentagem atingir 100%
 function atualizarTela() {
     if (telaAtual === 0) {
         telaAtual = 1;
@@ -225,8 +260,12 @@ function atualizarTela() {
         checarInfracoesCometidas();
         pegarProximaInstrucao();
     }
+
+    if (!mutado)
+        tocarSom("../media/sino.mp3");
 }
 
+// Atualiza a barra de porcentagem
 function AtualizarPorcentagem() {
     if (porcentagem < 100) {
         porcentagem += 100/duracaoInstrucaoAtual;

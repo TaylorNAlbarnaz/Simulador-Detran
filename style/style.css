@@ -66,7 +66,7 @@ body {
     background-color: limegreen;
 }
 
-.green-check, .red-check, #pause, #resume {
+.green-check, .red-check, #pause, #resume, #mute, #unmute {
     cursor: pointer;
     transition: .3s;
 }
@@ -87,7 +87,7 @@ body {
     scale: 1.1;
 }
 
-#pause:hover {
+#pause:hover, #resume:hover, #mute:hover, #unmute:hover {
     opacity: .8;
 }
 

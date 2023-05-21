@@ -1,6 +1,6 @@
-let instrucaoAtual;                            // A instrução atual sendo mostrada na tela
+let instrucaoAtual;                                 // A instrução atual sendo mostrada na tela
 let instrucaoInfracoes = [];                        // As infrações da instrução atual
-let sequenciaDeInstrucoes = [];     // Começa com a sequência de baliza
+let sequenciaDeInstrucoes = [];                     // Começa com a sequência de baliza
 
 let todasInfracoesCometidas = [];                   // Todas as infrações cometidas na sessão
 let porcentagem = 0;
@@ -196,14 +196,28 @@ function atualizarInfracoes() {
 function checarTodasAsInfracoes() {
     resultadoFinal.innerHTML = "";
     let resultadoPontos = 0;
+    let infracoesNaLista = [];
+
+    const map = {};
 
     // Pequeno algoritmo para contar quantas vezes um valor se repete em um array
-    var map = todasInfracoesCometidas.reduce(function(obj, b) {
-        obj[b] = ++obj[b] || 1;
-        return obj;
-    }, {});
+    for (infracao of todasInfracoesCometidas) {
+        const key = infracao.toString();
+        if (!map[key]) {
+            map[key] = 1;
+        } else {
+            map[key]++;
+        }
+    }
 
     for (infracao of todasInfracoesCometidas) {
+        console.log(infracao, todasInfracoesCometidas)
+
+        if (infracoesNaLista.includes(infracao))
+            return;
+
+        infracoesNaLista.push(infracao);
+
         const item = document.createElement("div");
         item.classList.add("resultado-final__item");
 
@@ -236,6 +250,7 @@ function checarTodasAsInfracoes() {
 // Checa todas as infrações cometidas na instrução atual e adiciona elas a lista
 function checarInfracoesCometidas() {
     const infracoes = document.getElementsByClassName("resultado-parcial__item");
+    console.log("Infrações cometidas adicionadas: ")
 
     for (infracao of infracoes) {
         const chequeVermelho = document.querySelector(`#${infracao.id} .red-check`);

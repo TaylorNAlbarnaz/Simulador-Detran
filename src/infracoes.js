@@ -12,7 +12,7 @@ const Infracoes = {
         pontos: 2
     },
     "4": {
-        texto: "Desenvolvar para segunda marcha",
+        texto: "Desenvolver para segunda marcha",
         pontos: 2
     },
     "5": {

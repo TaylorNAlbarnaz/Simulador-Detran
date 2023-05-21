@@ -8,7 +8,7 @@ const Instrucoes = {
     "2": {
         texto: "Vire a direita com placa de pare",
         infracoes: [8, 2, 3, 5, 4],
-        duracao: 25,
+        duracao: 22,
         voz: "direita"
     },
     "3": {
@@ -26,13 +26,13 @@ const Instrucoes = {
     "5": {
         texto: "Vire a esquerda com placa de pare",
         infracoes: [7, 2, 3, 6, 4],
-        duracao: 25,
+        duracao: 22,
         voz: "esquerda"
     },
     "6": {
         texto: "Vire a esquerda em via de mão única",
         infracoes: [7, 1, 12, 2, 3, 6, 4],
-        duracao: 20,
+        duracao: 19,
         voz: "esquerda-unica"
     },
     "7": {

@@ -211,8 +211,6 @@ function checarTodasAsInfracoes() {
     }
 
     for (infracao of todasInfracoesCometidas) {
-        console.log(infracao, todasInfracoesCometidas)
-
         if (infracoesNaLista.includes(infracao))
             return;
 
@@ -250,7 +248,6 @@ function checarTodasAsInfracoes() {
 // Checa todas as infrações cometidas na instrução atual e adiciona elas a lista
 function checarInfracoesCometidas() {
     const infracoes = document.getElementsByClassName("resultado-parcial__item");
-    console.log("Infrações cometidas adicionadas: ")
 
     for (infracao of infracoes) {
         const chequeVermelho = document.querySelector(`#${infracao.id} .red-check`);

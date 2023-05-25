@@ -31,7 +31,7 @@ const Instrucoes = {
     },
     "6": {
         texto: "Vire a esquerda em via de mão única",
-        infracoes: [1, 7, 1, 12, 6],
+        infracoes: [1, 7, 12, 6],
         duracao: 19,
         voz: "esquerda-unica"
     },
@@ -49,7 +49,7 @@ const Instrucoes = {
     },
     "9": {
         texto: "Faça um retorno de 3 pontas",
-        infracoes: [1, 7, 14, 3],
+        infracoes: [1, 7, 14, 3, 18, 4],
         duracao: 30,
         voz: "tres-pontas"
     },

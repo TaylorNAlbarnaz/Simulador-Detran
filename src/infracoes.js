@@ -65,6 +65,11 @@ const Infracoes = {
     },
     "17": {
         texto: "Colocar em ponto morto",
-        pontos: 21
-    }
+        pontos: 2
+    },
+    "18": {
+        texto: "Não avançar contra o meio-fio",
+        pontos: 4
+    },
+
 }
